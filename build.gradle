@@ -1,0 +1,58 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.1'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'group6'
+version = '0.0.1-SNAPSHOT'
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Gra' +
+				'dle Quickstart',
+				'Implementation-Version': version,
+				'Main-Class': 'group6.ecommerce.ECommerceApplication'
+	}
+}
+
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	compileOnly 'org.projectlombok:lombok'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-impl', version: '0.11.5'
+	runtimeOnly group: 'io.jsonwebtoken', name: 'jjwt-jackson', version: '0.11.5'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.12.3'
+	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+	// https://mvnrepository.com/artifact/org.springframework/spring-messaging
+	implementation group: 'org.springframework', name: 'spring-messaging', version: '6.1.6'
+
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
